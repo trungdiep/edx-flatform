@@ -37,8 +37,6 @@ define(['jquery', 'underscore', 'edx-ui-toolkit/js/utils/spec-helpers/ajax-helpe
                     'modal-button',
                     'move-xblock-modal'
                 ]);
-                console.log("diep van trung")
-
             });
 
             afterEach(function() {

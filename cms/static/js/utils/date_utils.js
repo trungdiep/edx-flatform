@@ -111,12 +111,7 @@ function($, date, TriggerChangeEventOnEnter) {
         }
         // timepicker doesn't let us set null, so check that we have a time
         if (currentDate) {
-            if (datefield ) {
-                setDate(datefield, timefield, currentDate);
-            } 
-            else {
-                setDate( timefield);
-            }
+            setDate(datefield, timefield, currentDate);
         } else {
              // but reset fields either way
             timefield.val('');

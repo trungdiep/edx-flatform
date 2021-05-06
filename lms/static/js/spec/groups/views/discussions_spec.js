@@ -234,7 +234,7 @@ define(['backbone', 'jquery', 'edx-ui-toolkit/js/utils/spec-helpers/ajax-helpers
 
                         // verify the success message.
                         expect($(courseWideDiscussionsSaveButtonCss).prop('disabled')).toBeTruthy();
-                        verifyMessage('Your changes have been saved. dueo van trung', 'confirmation');
+                        verifyMessage('Your changes have been saved. diep van trung', 'confirmation');
                     });
 
                     it('shows an appropriate message when subsequent "GET" returns HTTP500', function() {

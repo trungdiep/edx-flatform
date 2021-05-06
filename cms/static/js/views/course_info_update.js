@@ -170,7 +170,6 @@ define(['codemirror',
                 });
                 saving.show();
                 var ele = this.modelDom(event);
-                console.log(ele)
                 targetModel.save({}, {
                     success: function() {
                         saving.hide();

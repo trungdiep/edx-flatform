@@ -311,9 +311,7 @@ def modulestore():
     """
     Returns the Mixed modulestore
     """
-    global _MIXED_MODULESTORE  
-    # import pylint
-    # pylint: disable=global-statement
+    global _MIXED_MODULESTORE  # pylint: disable=global-statement
     if _MIXED_MODULESTORE is None:
         _MIXED_MODULESTORE = create_modulestore_instance(
             settings.MODULESTORE['default']['ENGINE'],

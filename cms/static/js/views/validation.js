@@ -158,7 +158,6 @@ define(['edx-ui-toolkit/js/utils/html-utils',
 
             saveView: function() {
                 var self = this;
-                console.log(this)
                 this.model.save(
             {},
                     {

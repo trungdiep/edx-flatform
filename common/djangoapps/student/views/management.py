@@ -74,7 +74,6 @@ from common.djangoapps.student.text_me_the_app import TextMeTheAppFragmentView
 from common.djangoapps.util.db import outer_atomic
 from common.djangoapps.util.json_request import JsonResponse
 from xmodule.modulestore.django import modulestore
-from edx_when.models import  UserDate
 
 log = logging.getLogger("edx.student")
 

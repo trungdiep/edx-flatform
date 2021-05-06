@@ -60,7 +60,7 @@ define(['js/views/validation',
         // once due to the graders collection changing when we cancel
         // our changes.
                 _.each(['change', 'remove', 'add'],
-        function(event) {
+               function(event) {
                    gradeCollection.on(event, function() {
                        this.showNotificationBar();
                        // Since the change event gets fired every time
