@@ -272,7 +272,6 @@ requires jQuery 1.7+
 	};
 
 	// private methods
-
 	function _render(self)
 	{
 		var settings = self.data('timepicker-settings');

@@ -36,7 +36,6 @@ ABOUT_ATTRIBUTES = [
 ]
 
 
-
 class CourseDetails(object):
     """
     An interface for extracting course information from the modulestore.
