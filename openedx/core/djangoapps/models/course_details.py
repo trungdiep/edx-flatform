@@ -194,7 +194,6 @@ class CourseDetails(object):
         """
         module_store = modulestore()
         descriptor = module_store.get_course(course_key)
-        import pdb; pdb.set_trace()
         dirty = False
 
         # In the descriptor's setter, the date is converted to JSON
@@ -205,12 +204,14 @@ class CourseDetails(object):
         date = Date()
         timedelta = Timedelta()
         if "relative" in jsondict:
-            converted = timedelta.from_json(jsondict['relative'])
+            converted = timedelta.enforce_type(jsondict['relative'] + 'hours') 
         else:
             converted = None
+        logging.info(converted)
         if converted != descriptor.relative:
             dirty = True
             descriptor.relative = converted
+            import pdb; pdb.set_trace()
 
         if 'start_date' in jsondict:
             converted = date.from_json(jsondict['start_date'])

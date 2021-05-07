@@ -95,6 +95,11 @@ def parse_args():
 
 
 if __name__ == "__main__":
+    from django.conf import settings
+    import ptvsd
+    if settings.DEBUG and (os.environ.get('RUN_MAIN') or os.environ.get('WERKZEUG_RUN_MAIN')):
+        import ptvsd
+        ptvsd.enable_attach(address=('0.0.0.0', 3001))
     edx_args, django_args = parse_args()
 
     edx_args_base = edx_args.settings_base.replace('/', '.') + '.'

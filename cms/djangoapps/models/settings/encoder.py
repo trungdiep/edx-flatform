@@ -10,7 +10,7 @@ from json.encoder import JSONEncoder
 from opaque_keys.edx.locations import Location
 
 from openedx.core.djangoapps.models.course_details import CourseDetails
-from xmodule.fields import Date
+from xmodule.fields import Date, Timedelta
 
 from .course_grading import CourseGradingModel
 
@@ -27,5 +27,7 @@ class CourseSettingsEncoder(json.JSONEncoder):
             return obj.dict()
         elif isinstance(obj, datetime.datetime):
             return Date().to_json(obj)
+        elif isinstance(obj, datetime.timedelta):
+            return Timedelta().to_json(obj)
         else:
             return JSONEncoder.default(self, obj)
