@@ -263,7 +263,6 @@ def course_handler(request, course_key_string=None):
         json: delete this branch from this course (leaving off /branch/draft would imply delete the course)
     """
     try:
-        print('diep van trung')
         response_format = request.GET.get('format') or request.POST.get('format') or 'html'
         if response_format == 'json' or 'application/json' in request.META.get('HTTP_ACCEPT', 'application/json'):
             if request.method == 'GET':
@@ -1164,6 +1163,7 @@ def settings_handler(request, course_key_string):
         elif 'application/json' in request.META.get('HTTP_ACCEPT', ''):
             if request.method == 'GET':
                 course_details = CourseDetails.fetch(course_key)
+                logging.info(course_details)
                 return JsonResponse(
                     course_details,
                     # encoder serializes dates, old locations, and instances

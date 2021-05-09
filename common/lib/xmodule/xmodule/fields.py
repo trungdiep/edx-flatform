@@ -121,7 +121,8 @@ class Timedelta(JSONField):
         for (name, param) in six.iteritems(parts):
             if param:
                 time_params[name] = int(param)
-        return timedelta_custom(**time_params)
+        return datetime.timedelta(**time_params)
+        # return timedelta_custom(**time_params)
 
     def to_json(self, value):
         if value is None:

@@ -15,9 +15,6 @@ from .utils import spaced_out_sections
 
 log = logging.getLogger(__name__)
 
-# fields_to_extract = [i for i in FIELDS_TO_EXTRACT]
-# fields_to_extract.append('relative')
-# FIELDS_TO_EXTRACT = tuple(fields_to_extract)
 
 def _field_values(fields, xblock):
     """

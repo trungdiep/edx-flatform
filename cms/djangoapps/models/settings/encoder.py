@@ -14,6 +14,7 @@ from xmodule.fields import Date, Timedelta
 
 from .course_grading import CourseGradingModel
 
+
 class CourseSettingsEncoder(json.JSONEncoder):
     """
     Serialize CourseDetails, CourseGradingModel, datetime, and old
@@ -27,6 +28,6 @@ class CourseSettingsEncoder(json.JSONEncoder):
         elif isinstance(obj, datetime.datetime):
             return Date().to_json(obj)
         elif isinstance(obj, datetime.timedelta):
-            return Timedelta().to_json(obj)
+            return Timedelta().to_json(obj).split()[0]
         else:
             return JSONEncoder.default(self, obj)

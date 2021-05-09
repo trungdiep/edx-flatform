@@ -117,6 +117,7 @@ class CourseDetails(object):
         course_details.enrollment_start = course_descriptor.enrollment_start
         course_details.enrollment_end = course_descriptor.enrollment_end
         course_details.relative = course_descriptor.relative
+        # logging.info(course_descriptor.enrollment_end)
         course_details.pre_requisite_courses = course_descriptor.pre_requisite_courses
         course_details.course_image_name = course_descriptor.course_image
         course_details.course_image_asset_path = course_image_url(course_descriptor, 'course_image')
@@ -207,8 +208,8 @@ class CourseDetails(object):
         date = Date()
         timedelta = Timedelta()
 
-        if 'relative' in jsondict and jsondict['relative'] is not None:
-            converted = timedelta.enforce_type(jsondict['relative'] + ' hours')
+        if 'relative' in jsondict:
+            converted = timedelta.enforce_type(jsondict['relative'] + ' seconds')
             # import pdb; pdb.set_trace()
         else:
             converted = None

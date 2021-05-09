@@ -172,7 +172,11 @@ class timedelta_custom(timedelta):
         """minutes"""
         return self._minutes
 
+    def total_seconds(self):
+        """Total seconds in the duration."""
+        return ((self.days * 86400 + self.seconds + self.hours * 3600) * 10**6 +
+                self.microseconds) / 10**6
         
-i = timedelta_custom(hours=2.5)
-print(isinstance(i, timedelta))
-print(i.__repr__())
+# i = timedelta_custom(hours=2.5)
+# print(isinstance(i, timedelta))
+# print(i.__repr__())
