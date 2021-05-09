@@ -323,6 +323,7 @@ class ContainerPage(PageObject, HelpMixin):
             """ promise function to check confirmation message state """
             text = self.q(css='#page-alert .alert.confirmation #alert-confirmation-title').text
             return text and message not in text[0] if verify_hidden else text and message in text[0]
+
         self.wait_for(_verify_message, description=u'confirmation message {status}'.format(
             status='hidden' if verify_hidden else 'present'
         ))

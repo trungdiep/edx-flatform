@@ -58,8 +58,6 @@ define(
                     '<div class="video-transcript-settings-wrapper"></div>' +
                     '<button class="button course-video-settings-button"></button>'
                 );
-                console.log("diep van trung")
-
                 TemplateHelpers.installTemplate('active-video-upload');
                 TemplateHelpers.installTemplate('active-video-upload-list');
                 $courseVideoSettingsButton = $('.course-video-settings-button');

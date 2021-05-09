@@ -66,7 +66,7 @@ function($, date, TriggerChangeEventOnEnter) {
         }
         return obj;
     }
-    //diep van trung
+
     function setupDatePicker(fieldName, view, index) {
         var cacheModel;
         var div;

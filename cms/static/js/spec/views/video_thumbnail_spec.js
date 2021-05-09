@@ -124,7 +124,6 @@ define(
                 TemplateHelpers.installTemplate('video-thumbnail');
                 TemplateHelpers.installTemplate('previous-video-upload-list');
                 createVideoListView(true);
-                console.log("diep van trung")
             });
 
             it('Verifies that the ThumbnailView is not initialized on disabling the feature', function() {

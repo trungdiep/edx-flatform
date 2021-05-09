@@ -232,18 +232,7 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
                 <span class="tip tip-stacked timezone">${_("(UTC)")}</span>
               </div>
             </li>
-            <li class="field-group" id="field-course-relative">
-              <div class="field date">
-                <label for="course-relative">Relative Instance</label>
-                <input type="text" class="short time" id="course-relative" placeholder="HH:MM" autocomplete="off" />
-                <span class="tip tip-inline">Khoảng thời gian hiển thị</span>
-              </div>
-            </li>
-            <!-- <li class="field text" id="field-course-effort">
-              <label for="course-effort">${_("Hours of Effort per Week")}</label>
-              <input type="text" class="short time" id="course-effort" placeholder="HH:MM" />
-              <span class="tip tip-inline">${_("Time spent on all course work")}</span>
-            </li> -->
+
             <li class="field-group field-group-course-end" id="course-end">
               <div class="field date" id="field-course-end-date">
                 <label for="course-end-date">${_("Course End Date")}</label>
@@ -305,6 +294,13 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
                 <label for="course-enrollment-end-time">${_("Enrollment End Time")}</label>
                 <input type="text" class="time end" id="course-enrollment-end-time" value="" placeholder="HH:MM" autocomplete="off" ${enrollment_end_readonly} />
                 <span class="tip tip-stacked timezone">${_("(UTC)")}</span>
+              </div>
+            </li>
+            <li class="field-group" id="field-course-relative">
+              <div class="field time">
+                <label for="course-relative">Plan Course</label>
+                <input type="text" class="short time" id="course-relative" placeholder="HH:MM" />
+                <!-- <span class="tip tip-stacked">${_("First day students can enroll")}</span> -->
               </div>
             </li>
           </ol>

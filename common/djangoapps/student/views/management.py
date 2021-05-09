@@ -50,7 +50,6 @@ from openedx.core.djangoapps.programs.models import ProgramsApiConfig
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 from openedx.core.djangoapps.theming import helpers as theming_helpers
 from openedx.core.djangoapps.user_api.preferences import api as preferences_api
-from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
 from openedx.core.djangolib.markup import HTML, Text
 from common.djangoapps.student.helpers import DISABLE_UNENROLL_CERT_STATES, cert_info, generate_activation_email_context
 from common.djangoapps.student.message_types import AccountActivation, EmailChange, EmailChangeConfirmation, RecoveryEmailCreate
@@ -360,13 +359,7 @@ def change_enrollment(request, check_access=True):
             try:
                 enroll_mode = CourseMode.auto_enroll_mode(course_id, available_modes)
                 if enroll_mode:
-                    course_current_enroll = CourseEnrollment.enroll(user, course_id, check_access=check_access, mode=enroll_mode)
-                    nearly_enroll_course = course_current_enroll.history.all().first().history_date
-                    course_entire = CourseOverview.get_from_id(course_id)
-                    if nearly_enroll_course > course_entire.start_date:
-                        logging.info("ngày đăng kí lớn hơn ngày bắt đầu")
-                    else:
-                        logging.info("ngày đăng kí nhỏ hơn ngày bắt đầu")
+                    CourseEnrollment.enroll(user, course_id, check_access=check_access, mode=enroll_mode)
             except Exception:  # pylint: disable=broad-except
                 return HttpResponseBadRequest(_("Could not enroll"))
 

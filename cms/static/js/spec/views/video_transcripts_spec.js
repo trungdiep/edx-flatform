@@ -122,8 +122,6 @@ define(
                     '<div id="page-notification"></div>' +
                     '<section class="wrapper-assets"></section>'
                 );
-                console.log("diep van trung")
-
                 TemplateHelpers.installTemplate('previous-video-upload-list');
                 renderView(transcripts);
             });

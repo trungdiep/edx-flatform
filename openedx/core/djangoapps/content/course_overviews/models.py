@@ -226,6 +226,7 @@ class CourseOverview(TimeStampedModel):
         course_overview.effort = CourseDetails.fetch_about_attribute(course.id, 'effort')
         course_overview.course_video_url = CourseDetails.fetch_video_url(course.id)
         course_overview.self_paced = course.self_paced
+        course_overview.relative = course.relative
 
         if not CatalogIntegration.is_enabled():
             course_overview.language = course.language
@@ -372,7 +373,6 @@ class CourseOverview(TimeStampedModel):
         # a change to CourseOverviewImageConfig.
         if course_overview and not hasattr(course_overview, 'image_set'):
             CourseOverviewImageSet.create(course_overview)
-
         return course_overview or cls.load_from_module_store(course_id)
 
     @classmethod

@@ -3136,6 +3136,8 @@ class SplitMongoModuleStore(SplitBulkWriteMixin, ModuleStoreWriteBase):
         # the existing partition_fields_by_scope works on a dict not an xblock
         result = defaultdict(dict)
         for field in six.itervalues(xblock.fields):
+            # if 'relative' in field:
+            #     logging.info('diep van trung')
             if field.is_set_on(xblock):
                 result[field.scope][field.name] = field.read_from(xblock)
         return result

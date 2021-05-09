@@ -263,6 +263,7 @@ def course_handler(request, course_key_string=None):
         json: delete this branch from this course (leaving off /branch/draft would imply delete the course)
     """
     try:
+        print('diep van trung')
         response_format = request.GET.get('format') or request.POST.get('format') or 'html'
         if response_format == 'json' or 'application/json' in request.META.get('HTTP_ACCEPT', 'application/json'):
             if request.method == 'GET':
@@ -1163,7 +1164,6 @@ def settings_handler(request, course_key_string):
         elif 'application/json' in request.META.get('HTTP_ACCEPT', ''):
             if request.method == 'GET':
                 course_details = CourseDetails.fetch(course_key)
-                # setattr(course_details, 'relative','03:00')
                 return JsonResponse(
                     course_details,
                     # encoder serializes dates, old locations, and instances
@@ -1172,9 +1172,7 @@ def settings_handler(request, course_key_string):
             # For every other possible method type submitted by the caller...
             else:
                 # if pre-requisite course feature is enabled set pre-requisite course
-                print('diep van trung')
                 if is_prerequisite_courses_enabled():
-                    print('diep van trung 1')
                     prerequisite_course_keys = request.json.get('pre_requisite_courses', [])
                     if prerequisite_course_keys:
                         if not all(is_valid_course_key(course_key) for course_key in prerequisite_course_keys):

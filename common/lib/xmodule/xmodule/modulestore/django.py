@@ -328,6 +328,7 @@ def modulestore():
             # appropriate wrappers depending on enabled features.
             from lms.djangoapps.ccx.modulestore import CCXModulestoreWrapper
             _MIXED_MODULESTORE = CCXModulestoreWrapper(_MIXED_MODULESTORE)
+
     return _MIXED_MODULESTORE
 
 

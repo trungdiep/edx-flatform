@@ -13,7 +13,7 @@ from xblock.fields import JSONField
 from xblock.scorable import Score
 
 log = logging.getLogger(__name__)
-
+from datetime_diepvantrung import timedelta_custom
 
 class Date(JSONField):
     '''
@@ -121,7 +121,7 @@ class Timedelta(JSONField):
         for (name, param) in six.iteritems(parts):
             if param:
                 time_params[name] = int(param)
-        return datetime.timedelta(**time_params)
+        return timedelta_custom(**time_params)
 
     def to_json(self, value):
         if value is None:

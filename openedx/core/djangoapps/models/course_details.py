@@ -101,8 +101,8 @@ class CourseDetails(object):
         Fetch the course details for the given course from persistence
         and return a CourseDetails model.
         """
-        course_detail = cls.populate(modulestore().get_course(course_key))
-        return course_detail
+        module_store = modulestore().get_course(course_key)
+        return cls.populate(module_store)
 
     @classmethod
     def populate(cls, course_descriptor):
@@ -116,6 +116,7 @@ class CourseDetails(object):
         course_details.certificate_available_date = course_descriptor.certificate_available_date
         course_details.enrollment_start = course_descriptor.enrollment_start
         course_details.enrollment_end = course_descriptor.enrollment_end
+        course_details.relative = course_descriptor.relative
         course_details.pre_requisite_courses = course_descriptor.pre_requisite_courses
         course_details.course_image_name = course_descriptor.course_image
         course_details.course_image_asset_path = course_image_url(course_descriptor, 'course_image')
@@ -137,6 +138,7 @@ class CourseDetails(object):
             value = cls.fetch_about_attribute(course_key, attribute)
             if value is not None:
                 setattr(course_details, attribute, value)
+
         return course_details
 
     @classmethod
@@ -194,6 +196,7 @@ class CourseDetails(object):
         """
         module_store = modulestore()
         descriptor = module_store.get_course(course_key)
+
         dirty = False
 
         # In the descriptor's setter, the date is converted to JSON
@@ -203,15 +206,15 @@ class CourseDetails(object):
         # is what the setter expects as input.
         date = Date()
         timedelta = Timedelta()
-        if "relative" in jsondict:
-            converted = timedelta.enforce_type(jsondict['relative'] + 'hours') 
+
+        if 'relative' in jsondict and jsondict['relative'] is not None:
+            converted = timedelta.enforce_type(jsondict['relative'] + ' hours')
+            # import pdb; pdb.set_trace()
         else:
             converted = None
-        logging.info(converted)
         if converted != descriptor.relative:
             dirty = True
-            descriptor.relative = converted
-            import pdb; pdb.set_trace()
+            descriptor.relative = converted            
 
         if 'start_date' in jsondict:
             converted = date.from_json(jsondict['start_date'])
@@ -298,10 +301,8 @@ class CourseDetails(object):
                 and jsondict['self_paced'] != descriptor.self_paced):
             descriptor.self_paced = jsondict['self_paced']
             dirty = True
-
         if dirty:
             module_store.update_item(descriptor, user.id)
-
         # NOTE: below auto writes to the db w/o verifying that any of
         # the fields actually changed to make faster, could compare
         # against db or could have client send over a list of which
@@ -309,11 +310,13 @@ class CourseDetails(object):
         for attribute in ABOUT_ATTRIBUTES:
             if attribute in jsondict:
                 cls.update_about_item(descriptor, attribute, jsondict[attribute], user.id)
+
         cls.update_about_video(descriptor, jsondict['intro_video'], user.id)
 
         # Could just return jsondict w/o doing any db reads, but I put
         # the reads in as a means to confirm it persisted correctly
-        return CourseDetails.fetch(course_key)
+        model =  CourseDetails.fetch(course_key)
+        return model
 
     @staticmethod
     def parse_video_tag(raw_video):

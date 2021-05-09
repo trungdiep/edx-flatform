@@ -11,8 +11,7 @@ define(['jquery', 'underscore', 'backbone', 'gettext', 'js/utils/handle_iframe_b
          iframe src urls on a page so that they are rendered as part of the DOM.
          */
 
-        var BaseView = Backbone.View.extend(
-            {
+        var BaseView = Backbone.View.extend({
             events: {
                 'click .ui-toggle-expansion': 'toggleExpandCollapse'
             },

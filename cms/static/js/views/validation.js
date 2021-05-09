@@ -142,7 +142,7 @@ define(['edx-ui-toolkit/js/utils/html-utils',
             },
 
             showSavedBar: function(title, message) {
-                var defaultTitle = gettext('Your changes have been saved. diep van trung');
+                var defaultTitle = gettext('Your changes have been saved.');
                 this.saved = new AlertView.Confirmation({
                     title: title || defaultTitle,
                     message: message,

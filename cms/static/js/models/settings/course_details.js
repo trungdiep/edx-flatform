@@ -36,7 +36,7 @@ define(['backbone', 'underscore', 'gettext', 'js/models/validation_helpers', 'js
                 learning_info: [],
                 instructor_info: {},
                 self_paced: null,
-                relative: null,
+                relative: null
             },
 
             validate: function(newattrs) {
@@ -45,7 +45,7 @@ define(['backbone', 'underscore', 'gettext', 'js/models/validation_helpers', 'js
                 var errors = {};
                 newattrs = DateUtils.convertDateStringsToObjects(
                     newattrs,
-                    ['start_date', 'end_date', 'certificate_available_date', 'enrollment_start', 'enrollment_end',]
+                    ['start_date', 'end_date', 'certificate_available_date', 'enrollment_start', 'enrollment_end']
                 );
 
                 if (newattrs.start_date === null) {

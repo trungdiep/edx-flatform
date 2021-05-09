@@ -13,7 +13,6 @@ define(['underscore', 'jquery', 'common/js/components/views/feedback_notificatio
 
         installViewTemplates = function() {
             appendSetFixtures('<div id="page-notification"></div>');
-            console.log("diep van trung")
         };
 
         createFeedbackSpy = function(type, intent) {

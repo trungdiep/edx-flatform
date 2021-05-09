@@ -328,7 +328,6 @@ class CourseFields(object):
     wiki_slug = String(help=_("Slug that points to the wiki for this course"), scope=Scope.content)
     enrollment_start = Date(help=_("Date that enrollment for this class is opened"), scope=Scope.settings)
     enrollment_end = Date(help=_("Date that enrollment for this class is closed"), scope=Scope.settings)
-    relative = Timedelta(help=_("The offset is added to a students Content Availability Date."), scope=Scope.settings)
     start = Date(
         help=_("Start time when this module is visible"),
         default=DEFAULT_START_DATE,
@@ -339,6 +338,8 @@ class CourseFields(object):
         help=_("Date that certificates become available to learners"),
         scope=Scope.content
     )
+    # place course
+    relative = Timedelta(help=_("Interval plan course"), scope=Scope.settings)
     cosmetic_display_price = Integer(
         display_name=_("Cosmetic Course Display Price"),
         help=_(

@@ -150,7 +150,7 @@ define(['backbone',
                 // Django will actually respond with a 302 redirect, but that would cause a page load during these
                 // unittests.  204 should work fine for testing.
                 AjaxHelpers.respondWithNoContent(requests);
-                FieldViewsSpecHelpers.expectMessageContains(view, 'Your changes have been saved. diep van trung');
+                FieldViewsSpecHelpers.expectMessageContains(view, 'Your changes have been saved.');
 
                 data = {language: FieldViewsSpecHelpers.SELECT_OPTIONS[1][0]};
                 view.$(selector).val(data[fieldData.valueAttribute]).change();

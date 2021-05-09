@@ -139,7 +139,7 @@
                                 self.model.fetch()
                                     .done(function() {
                                         self.render();
-                                        self.showMessage(gettext('Your changes have been saved. diep van trung'),
+                                        self.showMessage(gettext('Your changes have been saved.'),
                                             self.$('.inline-discussion-topics'));
                                     }).fail(function() {
                                         var errorMessage = gettext("We've encountered an error. Refresh your browser and then try again."); // eslint-disable-line max-len

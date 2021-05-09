@@ -59,8 +59,9 @@ class DraftVersioningModuleStore(SplitMongoModuleStore, ModuleStoreDraftAndPubli
 
     def get_course(self, course_id, depth=0, **kwargs):
         course_id = self._map_revision_to_branch(course_id)
-        return super(DraftVersioningModuleStore, self).get_course(course_id, depth=depth, **kwargs)
-
+        course = super(DraftVersioningModuleStore, self).get_course(course_id, depth=depth, **kwargs)
+        return course
+        
     def get_library(self, library_id, depth=0, head_validation=True, **kwargs):
         if not head_validation and library_id.version_guid:
             return SplitMongoModuleStore.get_library(

@@ -68,7 +68,7 @@
                 error: gettext('An error occurred. Please try again.'),
                 validationError: '',
                 inProgress: gettext('Saving'),
-                success: gettext('Your changes have been saved. ')
+                success: gettext('Your changes have been saved.')
             },
 
             constructor: function(options) {
@@ -106,7 +106,6 @@
                 } else if (this.showMessages) {
                     return HtmlUtils.joinHtml(this.indicators[message_status], this.messages[message_status]);
                 }
-                console.log('diep van trung')
                 return this.indicators[message_status];
             },
 

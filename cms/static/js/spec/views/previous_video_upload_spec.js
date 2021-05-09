@@ -27,8 +27,6 @@ define(
             beforeEach(function() {
                 setFixtures('<div id="page-prompt"></div><div id="page-notification"></div>');
                 TemplateHelpers.installTemplate('previous-video-upload', false);
-                console.log("diep van trung")
-
             });
 
             it('should render video name correctly', function() {
